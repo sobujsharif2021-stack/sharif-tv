@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-[#f3f4f6] text-slate-900 antialiased selection:bg-rose-500 selection:text-white;
+    font-family: var(--font-sans);
+    transition: background-color 0.3s ease;
+  }
+}
+
+/* Custom transitions for dark mode */
+.dark-mode {
+  background-color: #0f0f18;
+  color: #f8fafc;
+}
+
+.premium-glow {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+

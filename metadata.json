@@ -1,0 +1,6 @@
+{
+  "name": "SHARIF IPTV",
+  "description": "Premium IPTV player with multi-playlist support, smooth mobile experience, and high-performance streaming.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
