@@ -198,21 +198,21 @@ export default function App() {
   };
 
   return (
-    <div className={`h-screen flex flex-col font-sans select-none overflow-hidden transition-colors duration-300 ${isDarkMode ? 'bg-[#0f0f18] text-white' : 'bg-[#f3f4f6] text-slate-900'}`}>
+    <div className={`h-screen flex flex-col font-sans select-none overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-[#0a0a12] text-white' : 'bg-[#f8fafc] text-slate-900'}`}>
       
       {/* 1. FIXED TOP AREA (Header + Player + Search) */}
-      <div className={`flex-shrink-0 z-50 border-b transition-all duration-300 ${isDarkMode ? 'bg-[#0f0f18] border-slate-800' : 'bg-[#f3f4f6] border-slate-200'}`}>
-        <div className="w-full max-w-6xl mx-auto pt-3 pb-4 space-y-3">
+      <div className={`flex-shrink-0 z-50 border-b transition-all duration-300 ${isDarkMode ? 'bg-[#0a0a12] border-white/5' : 'bg-white border-slate-200'} shadow-sm`}>
+        <div className="w-full max-w-6xl mx-auto pt-4 pb-4 space-y-3">
           
           {/* Subtle Branding */}
-          <div className="flex items-center justify-between px-4">
+          <div className="flex items-center justify-between px-6">
             <div className="flex items-center gap-3">
-              <div className="bg-[#12121e] text-white px-3 py-1.5 rounded-lg border border-slate-700 shadow-md">
-                <h1 className="text-[10px] font-black tracking-[0.2em] uppercase text-white">SHARIF IPTV</h1>
+              <div className="bg-gradient-to-br from-slate-800 to-black text-white px-4 py-2 rounded-xl border border-white/10 shadow-2xl">
+                <h1 className="text-[11px] font-black tracking-[0.25em] uppercase text-rose-500">SHARIF <span className="text-white">TV</span></h1>
               </div>
               <div className="hidden xs:flex items-center gap-2">
-                <div className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse"></div>
-                <span className="text-[7px] font-black text-slate-500 uppercase tracking-widest">System Online</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
+                <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Premium Node</span>
               </div>
             </div>
             
@@ -251,17 +251,17 @@ export default function App() {
           </section>
 
           {/* Search Bar (Compact) */}
-          <div className="px-4">
-            <div className={`relative rounded-2xl border p-0.5 flex items-center shadow-sm focus-within:shadow-lg transition-all duration-300 ${
-              isDarkMode ? 'bg-[#121220] border-slate-800' : 'bg-white border-slate-200'
+          <div className="px-6">
+            <div className={`relative rounded-2xl border p-0.5 flex items-center shadow-inner transition-all duration-300 ${
+              isDarkMode ? 'bg-black/40 border-white/5 ring-1 ring-white/5' : 'bg-slate-100 border-slate-200'
             }`}>
-              <Search className="absolute left-4 text-slate-400" size={16} />
+              <Search className="absolute left-4 text-slate-500/50" size={16} />
               <input
                 type="text"
-                placeholder="Find a channel to stream..."
+                placeholder="Search premium channels..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className={`w-full bg-transparent border-0 outline-none text-[10px] sm:text-xs ml-10 py-3 pr-4 font-bold ${
+                className={`w-full bg-transparent border-0 outline-none text-[11px] sm:text-xs ml-10 py-3 pr-4 font-bold ${
                   isDarkMode ? 'text-white placeholder-slate-600' : 'text-slate-900 placeholder-slate-400'
                 }`}
               />

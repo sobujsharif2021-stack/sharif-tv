@@ -172,13 +172,13 @@ export function Player({ url, channelName, autoPlay = true, onMinimize, onClose 
 
       {/* Loading & Error Overlays */}
       {isLoading && (
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-10">
+        <div className="absolute inset-0 bg-black/80 flex items-center justify-center z-10">
           <Loader2 className="animate-spin text-white opacity-50" size={32} />
         </div>
       )}
 
       {error && (
-        <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm flex flex-col items-center justify-center text-center p-6 z-10">
+        <div className="absolute inset-0 bg-slate-900 flex flex-col items-center justify-center text-center p-6 z-10">
           <AlertCircle className="text-rose-500 mb-2" size={32} />
           <p className="text-white text-xs font-bold uppercase tracking-widest">{error}</p>
         </div>
