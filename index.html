@@ -7,6 +7,26 @@
   </head>
   <body>
     <div id="root"></div>
+    <div id="error-overlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:white;color:black;padding:20px;z-index:9999;font-family:monospace;white-space:pre-wrap;overflow:auto;">
+      <h2>Browser Compatibility Error</h2>
+      <div id="error-message"></div>
+    </div>
+    <script>
+      window.onerror = function(msg, url, line, col, error) {
+        var overlay = document.getElementById('error-overlay');
+        var message = document.getElementById('error-message');
+        if (overlay && message) {
+          overlay.style.display = 'block';
+          message.textContent += '\nError: ' + msg + '\nLine: ' + line + '\nCol: ' + col + '\nURL: ' + url + (error ? '\nStack: ' + error.stack : '');
+        }
+        return false;
+      };
+      // Polyfill check
+      if (typeof Promise === 'undefined') {
+        document.getElementById('error-overlay').style.display = 'block';
+        document.getElementById('error-message').textContent = 'This browser does not support Promises. Please use a modern browser.';
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

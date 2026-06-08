@@ -10,12 +10,13 @@ export default defineConfig(() => {
       react(), 
       tailwindcss(),
       legacy({
-        targets: ['defaults', 'not IE 11'],
+        targets: ['chrome >= 49', 'safari >= 10', 'android >= 4.4', 'ios >= 10'],
+        additionalLegacyPolyfills: ['regenerator-runtime/runtime']
       }),
     ],
     build: {
-      target: 'es2015',
-      cssTarget: 'chrome61'
+      target: 'es5',
+      cssTarget: 'chrome49'
     },
     resolve: {
       alias: {

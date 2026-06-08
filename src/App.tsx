@@ -32,23 +32,29 @@ export default function App() {
         // 1. Fetch the playlist configuration
         const configResponse = await fetch('playlists.json');
         if (!configResponse.ok) throw new Error('Failed to load playlist configuration');
-        const { playlists } = await configResponse.json() as { playlists: string[] };
+        const configData = await configResponse.json();
+        const playlists = configData.playlists || [];
 
         // 2. Fetch all M3U files listed in the config
-        const results = await Promise.allSettled(
-          playlists.map(async (file) => {
-            const response = await fetch(file);
-            if (!response.ok) throw new Error(`Failed to load ${file}`);
-            return await response.text();
+        // Using basic Promise.all with catch safety to mimic allSettled behavior simply
+        const results = await Promise.all(
+          playlists.map(async (file: string) => {
+            try {
+              const response = await fetch(file);
+              if (!response.ok) return null;
+              return await response.text();
+            } catch (e) {
+              return null;
+            }
           })
         );
 
         let allChannels: Channel[] = [];
         const seenUrls = new Set<string>();
 
-        results.forEach((result) => {
-          if (result.status === 'fulfilled') {
-            const parsed = parseM3U(result.value);
+        results.forEach((m3uContent) => {
+          if (m3uContent) {
+            const parsed = parseM3U(m3uContent);
             parsed.forEach(channel => {
               if (!seenUrls.has(channel.url)) {
                 seenUrls.add(channel.url);
